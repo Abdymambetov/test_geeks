@@ -1,0 +1,37 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_logo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.header_logo img{
+    width: 104px;
+    height: 83px;
+}
+.header a{
+    text-decoration: none;
+}
+.profile_user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile_name{
+    font-size: 24px;
+    color: #000 !important;
+}
+.profile_img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header_auth{
+    display: flex;
+    gap: 15px;
+}
