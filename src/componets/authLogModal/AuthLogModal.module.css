@@ -1,0 +1,86 @@
+.modal_forms{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal_inner{
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 20px;
+}
+.close_cross{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.choise{
+    display: flex;
+    column-gap: 30px;
+    border-bottom: 2px solid #878787;
+}
+.login_inputs{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+.auth_input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+.login_inner{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.log_checkbox{
+    border-color: #AD02E0 !important;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+.button_log{
+    padding: 15px 186px !important;
+    width: 100%;
+}
+.regis_user{
+    width: 600px;
+    padding-top: 40px;
+}
+.regInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+.regImg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 180px;
+    height: 30px;
+    border-radius: 50%;
+}
+.addPhoto{
+    font-weight: 400;
+    font-size: 16px !important;
+    margin-top: 21px !important;
+    margin-bottom: 40px !important;
+    color: #000 !important;
+    background: none !important;
+}
+.buttonReg{
+    padding: 15px 186px !important;
+}

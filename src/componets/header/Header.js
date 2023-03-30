@@ -5,14 +5,29 @@ import logoManga from '../../images/headerImg/logo.svg'
 import { CssTextField } from '../../theme/Theme'
 import classes from './Header.module.css'
 import searchImg from '../../images/headerImg/searchLoop.svg'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import AuthLogModal from '../authLogModal/AuthLogModal'
+import { getProfileUserAction, logOutAction } from '../../store/slices/regisSlice'
 function Header() {
   const dispatch = useDispatch()
   const [openModal, setOpenModal] = useState(false)
   const [modal, setModal] = useState('register')
   const [modalStyle, setModalStyle] = useState(['none','static'])
   const [media, setMedia] = useState(['3px', '1'])
-  
+  const {users, logined, userInfo} = useSelector(state=> state.auth)
+
+  let account = users?.find(user => user.username === userInfo.username) 
+  const refreshToken = JSON.parse(localStorage.getItem('refreshToken'))
+
+  const infoUserAcc = JSON.parse(localStorage.getItem('profile'))
+  useEffect(() => {
+    dispatch(getProfileUserAction())
+  }, [])
+
+  const logOutFunc = () =>{
+    dispatch(logOutAction({refresh: refreshToken}))
+    
+  }
   const openRegModal = () => {
     setOpenModal(true)
     setModalStyle(['block', 'absolute'])
@@ -29,23 +44,22 @@ function Header() {
     setModal('login')
   }
   function isLoginedUser(log) {
-    if(log) {
-      return(
-        <Box className={classes.profile_user}>
+    return log
+      ?
+        (<Box className={classes.profile_user}>
           <Box>
             <Typography variant='span' className={classes.profile_name}>
-              Meder
+              {infoUserAcc?.username}
             </Typography>
           </Box>
-          <Box className={classes.profile_img} sx={{backgroundImage: `url(${searchImg})`}}></Box>
-          <Button variant='containder'>
+          <Box className={classes.profile_img} sx={{backgroundImage: `url(${infoUserAcc?.image_file})`}}></Box>
+          <Button variant='containder' onClick={logOutFunc}>
             <Typography variant='span'>Выйти</Typography>
           </Button>
         </Box>
-      )
-    } else{
-      return(
-        <Box className={classes.header_auth}>
+        )
+      :
+        (<Box className={classes.header_auth}>
           <Button 
             onClick={openLogModal}
             variant="outlined"
@@ -70,6 +84,7 @@ function Header() {
               Войти
             </Typography>
           </Button>
+          <AuthLogModal users={users} openReg={openRegModal} openLog={openLogModal} profile={account && account} openMod={openModal} modalClass = {modalStyle} type={modal} closeLogMod={closeLoginModal}/>
           <Button 
             onClick={openRegModal}
             variant="contained"
@@ -88,13 +103,12 @@ function Header() {
             }}
           >
             <Typography variant='span'>
-              Регистрация 
+              Регистрация
             </Typography>
           </Button>
         </Box>
-      )
-    }
-  }
+        )
+}
   return (
       <AppBar sx={{background: '#f3f3f3' }}>
         <Container
@@ -145,7 +159,7 @@ function Header() {
                 }}
               />
             </Box>
-            {isLoginedUser()}
+            {isLoginedUser(logined)}
           </Box>
         </Container>
       </AppBar>
