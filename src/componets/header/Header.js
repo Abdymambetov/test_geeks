@@ -18,8 +18,9 @@ function Header() {
 
   let account = users?.find(user => user.username === userInfo.username) 
   const refreshToken = JSON.parse(localStorage.getItem('refreshToken'))
-
-  const infoUserAcc = JSON.parse(localStorage.getItem('profile'))
+  if(!account){
+    account = JSON.parse(localStorage.getItem('profile'))
+  }
   useEffect(() => {
     dispatch(getProfileUserAction())
   }, [])
@@ -49,11 +50,30 @@ function Header() {
         (<Box className={classes.profile_user}>
           <Box>
             <Typography variant='span' className={classes.profile_name}>
-              {infoUserAcc?.username}
+              {account?.username}
             </Typography>
           </Box>
-          <Box className={classes.profile_img} sx={{backgroundImage: `url(${infoUserAcc?.image_file})`}}></Box>
-          <Button variant='containder' onClick={logOutFunc}>
+          <Box className={classes.profile_img} sx={{backgroundImage: `url(${account?.image_file})`}}></Box>
+          <Button 
+            variant='containder' 
+            onClick={logOutFunc}
+            sx={{
+              padding: '12px 40px',
+              color: '#000',
+              border: '2px solid #AD02E0',
+              borderRadius: '8px',
+              '&:hover': {
+                color: '#FFFFFF',
+                background: '#AD02E0',
+                border: '2px solid #AD02E0',
+                boxShadow: '0px 0px 20px #AD02E0',
+              },
+              '&:active': {
+                background: '#740994',
+                boxShadow: 'inset 0px 0px 20px rgba(0, 0, 0, 0.25)',
+              },
+            }}
+          >
             <Typography variant='span'>Выйти</Typography>
           </Button>
         </Box>

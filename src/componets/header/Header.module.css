@@ -15,6 +15,9 @@
 .header a{
     text-decoration: none;
 }
+.header_input_search{
+    position: relative;
+}
 .profile_user{
     display: flex;
     align-items: center;

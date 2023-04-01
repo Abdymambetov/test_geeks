@@ -1,0 +1,68 @@
+.filter_parent{
+    min-width: 400px;
+    height: 700px;
+    border-radius: 20px;
+    background-color: #FFF;
+    padding: 10px 15px 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.genres_all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 380px;
+    height: 55px;
+}
+.genres_all:hover{
+    border-radius: 10px;
+    background: rgba(135, 135, 135, 0.2);
+}
+.btn_genres{
+    display: flex;
+    align-items: center;
+    column-gap: 17px;
+}
+.btn_genres:hover{
+    background: none !important;
+}
+.btn_genres span{
+    background: none !important;
+}
+
+.inputs_year{
+    padding-top: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.start_year_input input::-webkit-outer-spin-button,
+.start_year_input input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.end_year_input input::-webkit-outer-spin-button,
+.end_year_input input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.types_genres{
+    padding-top: 43px;
+}
+.checkbox_btn{
+    gap: 10px;
+}
+.btn_filters{
+    padding: 10px 0;
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+}
+
+.one_btn_filter{
+    width: 175px;
+}
