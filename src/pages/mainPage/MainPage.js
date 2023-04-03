@@ -153,7 +153,7 @@ function MainPage() {
       ? 
       mangas?.results?.map((item) => (
         <Link key={item?.id} to={`${item?.id}`}>
-          <CardManga toManga={toManga} manga={item} key={item?.id}/>
+          <CardManga toInfoManga={toManga} manga={item} key={item?.id}/>
         </Link>
       ))
       :
@@ -165,7 +165,7 @@ function MainPage() {
       ? 
       mangasByType?.results?.map((item) => (
         <Link key={item?.id} to={`${item?.id}`}>
-          <CardManga toManga={toManga} manga={item} key={item?.id}/>
+          <CardManga toInfoManga={toManga} manga={item} key={item?.id}/>
         </Link>
       ))
       :
@@ -177,7 +177,7 @@ function MainPage() {
       ? 
       mangaByGenres?.results?.map((item) => (
         <Link key={item?.id} to={`${item?.id}`}>
-          <CardManga toManga={toManga} manga={item} key={item?.id}/>
+          <CardManga toInfoManga={toManga} manga={item} key={item?.id}/>
         </Link>
       ))
       :
@@ -188,7 +188,7 @@ function MainPage() {
       return (
         mangasByYears?.map((item) => (
         <Link key={item?.id} to={`${item?.id}`}>
-          <CardManga toManga={toManga} manga={item} key={item?.id}/>
+          <CardManga toInfoManga={toManga} manga={item} key={item?.id}/>
         </Link>
         )
       ))
@@ -197,7 +197,7 @@ function MainPage() {
       ? 
       topMangas?.results?.map((item) => (
         <Link key={item?.id} to={`${item?.id}`}>
-          <CardManga toManga={toManga} manga={item} key={item?.id}/>
+          <CardManga toInfoManga={toManga} manga={item} key={item?.id}/>
         </Link>
       ))
       :
@@ -240,13 +240,13 @@ function MainPage() {
           <TwoFilter
             confirmGenres={confirmGenres}
             resetAll={resetAll}
-            offset={offset} 
-            changeOffset={changeOffset} 
-            filterByYears={filterMangasByYears} 
             genres={genresArr}
             changePage={changePage}
             changeFilter={changeFilter}
             selectedGenres={selectGenres}
+            offset={offset}
+            changeOffset={changeOffset}
+            filterByYears={filterMangasByYears}
           />
         }
         <Box className={classes.mangas_page}>

@@ -66,3 +66,25 @@
 .one_btn_filter{
     width: 175px;
 }
+
+.go_back_filter{
+    color: #878787;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px !important;
+    padding: 17px 15px 15px;    
+}
+.go_back_filter:hover{
+    border-radius: 10px;
+    background-color: rgba(135, 135, 135, 0.2);
+}
+.checkbox_genres_two{
+    height: 500px;
+    flex-wrap: nowrap;
+    gap: 2px;
+    overflow-y: scroll;
+}
+.types_genres_2{
+    padding-top: 17px;
+}

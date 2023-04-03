@@ -1,0 +1,56 @@
+.info_page{
+    background-color: #F3F3F3;
+    padding-top: 87px;
+}
+.go_back{
+    font-size: 24px;
+    font-family: 'Montserrat';
+    margin: 0;
+    padding-top: 33px;
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    color: #878787 !important;
+    text-decoration: none;
+}
+.all_info_manga{
+    padding-top: 32px;
+    display: flex;
+    column-gap: 41px;
+}
+.info_block{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.image_manga{
+    width: 328px;
+    height: 328px;
+    border-radius: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.info_text{
+    padding-top: 21px;
+}
+.type_info{
+    color: #878787;
+    font-size: 24px !important;
+    margin-left: 10px !important;
+}
+.text_genres{
+    width: 785px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.hr_line{
+    border: 2px solid #CECECE;
+    margin: 32px 0;
+}
+.p{
+    color: #616161;
+    font-family: 'Montserrat' !important;
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    font-size: 24px !important;
+}

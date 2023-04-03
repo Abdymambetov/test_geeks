@@ -58,7 +58,7 @@ export const getMangasByTypesAction = createAsyncThunk(
 export const getMangasByGenresAction = createAsyncThunk(
     'getMangasByGenres',
     async (params) => {
-        const response = await axios.get(URL, { params: params });
+        const response = await axios.get(mangaApi, { params: params });
         const data = await response.data
         console.log(data);
         return data
@@ -83,7 +83,7 @@ const mangasSlice = createSlice({
             comments_count: 0,
             results: {}
         },
-        mangaId: 212,
+        mangaId: 1,
         mangasByType: {
             count: 0,
             results: []

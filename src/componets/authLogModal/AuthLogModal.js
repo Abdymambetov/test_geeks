@@ -31,8 +31,10 @@ function AuthLogModal({users,openReg, openLog, profile, openMod, modalClass, typ
     e.preventDefault()
     if(username === '' || password === '' || nickname === '' || uplFile === null){
       swal({text:'Заполните ВСЕ поля!',icon:'warning'})
+      return false
     }else if(username.length < 9 || password.length < 9 || nickname.length < 9){
       swal({text:'Имя, Никнейм и Пароль должны содержать как минимум 10 символов!',icon:'warning'})
+      return false
     }else if(users.find(u => u.username === username)){
       swal({text: 'Такой пользователь уже зарегистрирован', icon:'warning'})
     } else{
