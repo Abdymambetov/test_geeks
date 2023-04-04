@@ -54,3 +54,19 @@
     margin-bottom: 0 !important;
     font-size: 24px !important;
 }
+.comments{
+    margin-top: 33px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 33px;
+}
+.add_com{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pagination_block{
+    display: flex;
+    justify-content: center;
+    padding: 28px 0 32px;
+}

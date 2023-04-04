@@ -65,6 +65,38 @@ export const getMangasByGenresAction = createAsyncThunk(
     }
 )
 
+export const getCommentsMangaAction = createAsyncThunk(
+    'getCommentsMangaAction',
+    async(id) => {
+        const response = await axios.get(`http://134.122.75.14:8666/api/v1/manga/${id}/comments/`)
+        const data = await response.data
+        console.log(data)
+        return data
+    }
+)
+
+export const postCommentAction = createAsyncThunk(
+    'postCommentAction',
+    async(data) => {
+        const {id, text} = data
+        try{
+            console.log(id, text)
+            const response = await axios.post(`http://134.122.75.14:8666/api/v1/manga/${id}/add-comment/`, text, {
+                headers: {
+                    "Authorization": `Bearer ${JSON.parse(localStorage.getItem('tokenAccess'))}`
+                }
+            })
+            const data = await response.data
+            console.log(data)
+            if(response.status >= 201) {
+                window.location.reload()
+            }
+        } catch(e) {
+            alert(e)
+        }
+    }
+)
+
 const mangasSlice = createSlice({
     name: 'mangasSlice',
     initialState: {
@@ -170,6 +202,13 @@ const mangasSlice = createSlice({
             })
             .addCase(getOneMangaAction.pending, (state) => {
                 state.load = true
+            })
+            .addCase(getCommentsMangaAction.pending, (state, action) => {
+                state.load = true
+            })
+            .addCase(getCommentsMangaAction.fulfilled, (state, action) => {
+                state.mangaComments = action.payload
+                state.load = false
             })
         },
 })
