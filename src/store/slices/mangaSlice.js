@@ -34,15 +34,6 @@ export const getTopMangasAction = createAsyncThunk(
     }
 )
 
-export const searchMangaAction = createAsyncThunk(
-    'searchManga',
-    async (params) => {
-        const response = await axios.get(topManga, { params: params });
-        const data = await response.data
-        console.log(data);
-        return data
-    }
-)
 
 
 export const getMangasByTypesAction = createAsyncThunk(
@@ -97,6 +88,15 @@ export const postCommentAction = createAsyncThunk(
     }
 )
 
+export const searchMangaAction = createAsyncThunk(
+    'searchManga',
+    async (params) => {
+        const response = await axios.get(topManga, { params: params });
+        const data = await response.data
+        console.log(data);
+        return data
+    }
+)
 const mangasSlice = createSlice({
     name: 'mangasSlice',
     initialState: {

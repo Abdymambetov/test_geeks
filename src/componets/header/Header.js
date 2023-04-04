@@ -8,12 +8,16 @@ import searchImg from '../../images/headerImg/searchLoop.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import AuthLogModal from '../authLogModal/AuthLogModal'
 import { getProfileUserAction, logOutAction } from '../../store/slices/regisSlice'
+import SearchModal from '../searchComponent/SearchModal'
+import { searchMangaAction, setSearch } from '../../store/slices/mangaSlice'
 function Header() {
   const dispatch = useDispatch()
   const [openModal, setOpenModal] = useState(false)
   const [modal, setModal] = useState('register')
   const [modalStyle, setModalStyle] = useState(['none','static'])
   const [media, setMedia] = useState(['3px', '1'])
+  const [searchModal, setSearchModal] = useState(false)
+  const {search, searchText} = useSelector(state => state.manga)
   const {users, logined, userInfo} = useSelector(state=> state.auth)
 
   let account = users?.find(user => user.username === userInfo.username) 
@@ -43,6 +47,21 @@ function Header() {
     setOpenModal(false)
     setModalStyle(['none', 'static'])
     setModal('login')
+  }
+  const hide = () => {
+    setMedia(['3px', '1']);
+    setTimeout(() =>{setSearchModal(false)},1000)
+  }
+
+  // useEffect(() => {
+  //   dispatch(searchMangaAction({
+  //     search: searchText !== '' && searchText
+  //   }))
+  // }, [searchText, dispatch])
+  const clickSearch = () => {
+    dispatch(searchMangaAction({
+      search: searchText !== '' && searchText
+    }))
   }
   function isLoginedUser(log) {
     return log
@@ -128,7 +147,14 @@ function Header() {
           </Button>
         </Box>
         )
-}
+  }
+  const searchModalFunc = (state) => {
+    if(state === true) {
+      return search?.length> 0 && <SearchModal results={search?.length > 0 && search} className={classes.block_search}/>
+    } else{
+      return false
+    }
+  }
   return (
       <AppBar sx={{background: '#f3f3f3' }}>
         <Container
@@ -160,7 +186,15 @@ function Header() {
               <CssTextField
                 variant='outlined'
                 placeholder='Placeholder'
-                sx={{ height: '56px', width: '342px' }}
+                sx={{ height: '56px', width: '342px', paddingLeft: '50px' }}
+                onClick={() => {
+                  setSearchModal(true);
+                }}
+                onChange={(e) => {
+                  dispatch(setSearch(e.target.value));
+                }}
+                onFocus={() => setMedia(['-16px', '0'])}
+                onBlur={() => hide()}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -178,6 +212,8 @@ function Header() {
                   )
                 }}
               />
+              <Button onClick={clickSearch}>Searh</Button>
+              {searchModalFunc(searchModal)}
             </Box>
             {isLoginedUser(logined)}
           </Box>

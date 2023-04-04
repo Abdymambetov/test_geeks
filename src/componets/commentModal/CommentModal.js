@@ -21,7 +21,7 @@ function CommentModal({open, closeModal, modalStyle, postCommFunc}) {
             <CloseIcon sx={{position: 'absolute', right: '10px', top: '10px'}} onClick={closeModal}/>
             <Box className={classes.profile_info}>
                 <Box sx={{backgroundImage: `url(${profileUser?.image_file})`}} className={classes.user_avatar}></Box>
-                <Typography className={classes.profile_text} variant='p'>{profileUser?.username}, {profileUser?.nickname}</Typography>
+                <Typography className={classes.profile_text} variant='p'>{`${profileUser?.username},`} {profileUser?.nickname}</Typography>
             </Box>
             <Box className={classes.add_comm}>
                 <TextField
