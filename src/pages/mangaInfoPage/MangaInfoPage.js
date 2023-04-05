@@ -41,9 +41,13 @@ function MangaInfoPage() {
   useEffect(() => {
     dispatch(getCommentsMangaAction(mangaId))
   }, [mangaId, dispatch])
-
+  
   const decodedText = decodeURIComponent(manga?.description)
-  const cleanText = decodedText.replace(/<\/?[^>]+(>|$)/g, "").replace(/&mdash;/g, "-").replace(/&raquo;/g, "»").replace(/&laquo;/g, "«").replace(/&ndash;/g, "-").replace(/&nbsp;/g, " ").replace(/&hellip;/g, "...");
+  const cleanText = decodedText.replace(/<\/?[^>]+(>|$)/g, "")
+  .replace(/&mdash;/g, "-").replace(/&raquo;/g, "»")
+  .replace(/&laquo;/g, "«").replace(/&ndash;/g, "-")
+  .replace(/&nbsp;/g, " ").replace(/&hellip;/g, "...")
+  .replace(/&quot;/g, "\"");
   return (
     <Box className={classes.info_page}>
       {!load 

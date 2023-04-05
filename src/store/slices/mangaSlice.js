@@ -47,7 +47,7 @@ export const getMangasByTypesAction = createAsyncThunk(
 )
 
 export const getMangasByGenresAction = createAsyncThunk(
-    'getMangasByGenres',
+    'getMangasByGenresAction',
     async (params) => {
         const response = await axios.get(mangaApi, { params: params });
         const data = await response.data
@@ -132,18 +132,6 @@ const mangasSlice = createSlice({
         users: [],
     },
     reducers: {
-        setStartYear(state, action){
-            state.startYear = action.payload
-        },
-        setEndYear(state, action){
-            state.endYear = action.payload
-        },
-        setMangasByType(state, action){
-            state.mangasByType = action.payload
-        },
-        setResults(state,action){
-            state.mangas = action.payload
-        },
         setMangasByYear(state, action){
             state.mangasByYears = action.payload
         },
@@ -161,7 +149,19 @@ const mangasSlice = createSlice({
         },
         setSearch(state,action){
             state.searchText = action.payload
-        }
+        }, 
+        setStartYear(state, action){
+            state.startYear = action.payload
+        },
+        setEndYear(state, action){
+            state.endYear = action.payload
+        },
+        setMangasByType(state, action){
+            state.mangasByType = action.payload
+        },
+        setResults(state,action){
+            state.mangas = action.payload
+        },
     }, extraReducers: (builder) => {
             builder
             .addCase(searchMangaAction.fulfilled, (state,action) => {

@@ -8,8 +8,6 @@ import MangaInfoPage from './pages/mangaInfoPage/MangaInfoPage';
 import Layouts from './layouts/Layouts';
 function App() {
   return (
-    <div className='App'>
-      <div className='container'>
         <ThemeProvider theme={theme}>
               <Routes>
                 <Route path='/' element={<Layouts/>}>
@@ -18,8 +16,6 @@ function App() {
                 </Route>
               </Routes>
           </ThemeProvider>
-      </div>
-    </div>
   );
 }
 

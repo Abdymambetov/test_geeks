@@ -34,22 +34,26 @@ export const regisUserAction = createAsyncThunk(
 export const logInAction = createAsyncThunk(
     'logInAction',
     async (param, {dispatch}) => {
-        const response = await axios({
-            method: 'POST',
-            url: logUrl,
-            headers: {
-                'Content-type': 'application/json'
-            },
-            data: JSON.stringify(param)
-        })
-        .then((response) => {
-            localStorage.setItem('tokenAccess', JSON.stringify(response.data.access))
-            localStorage.setItem('refreshToken', JSON.stringify(response.data.refresh))
-            localStorage.setItem('logined',true)
-            console.log(response.data);
-        })
-        .catch((err) => console.log(err))
-        return response
+        try{
+            const response = await axios({
+                method: 'POST',
+                url: logUrl,
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                data: JSON.stringify(param)
+            })
+            const data = await response.data
+            console.log(data)
+            if(response.status === 200) {
+                localStorage.setItem('tokenAccess', JSON.stringify(data.access))
+                localStorage.setItem('refreshToken', JSON.stringify(data.refresh))
+                localStorage.setItem('logined',true)
+                window.location.reload()
+            }
+        }catch(e){
+            alert(e)
+        }
     }
 )
 export const logOutAction = createAsyncThunk(

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setTypes } from '../../store/slices/mangaSlice';
 import { setGenres } from '../../store/slices/genresSlice';
 
-function TwoFilter({confirmGenres, resetAll, genres, changePage, changeFilter, selectedGenres}) {
+function TwoFilter({confirmGenres, resetAll, genres, changePage, changeFilter, selectedGenres, offset}) {
   const [resetAndApply, setResetAndApply] = useState(['Сбросить', 'Применить'])
   const dispatch = useDispatch()
   const changeFilterBack = () => {
@@ -19,7 +19,7 @@ function TwoFilter({confirmGenres, resetAll, genres, changePage, changeFilter, s
   }
   useEffect(() => {
     confirmGenres(selectedGenres)
-  }, [selectedGenres])
+  }, [selectedGenres, offset]);
   
   return (
     <Box className={classes.filter_parent}>
@@ -40,12 +40,12 @@ function TwoFilter({confirmGenres, resetAll, genres, changePage, changeFilter, s
               }}
               onChange={({target}) => {
                 target.checked
-                ? dispatch(setGenres(item?.title))
-                : dispatch(setGenres(''))
+                  ? dispatch(setGenres(item?.title))
+                  : dispatch(setGenres(''))
               }}
               control={
                 <Checkbox
-                onClick={changePage}
+                
                 checked={item?.title === selectedGenres}
                 key={item?.id}
                 sx={{
@@ -88,7 +88,7 @@ function TwoFilter({confirmGenres, resetAll, genres, changePage, changeFilter, s
         onBlur={() => {
           setResetAndApply(['Сбросить', 'Применить'])
         }}
-        onClick={deleteAll}
+        onClick={() => {deleteAll()}}
         >
           <Typography variant='span'>{resetAndApply[0]}</Typography>
         </Button>

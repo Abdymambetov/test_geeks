@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllMangasAction, getMangasByGenresAction, getMangasByTypesAction, getTopMangasAction, setMangaByGenre, setMangaId, setMangasByType, setMangasByYear } from '../../store/slices/mangaSlice';
 import { genresAction } from '../../store/slices/genresSlice';
 import PaginationFunc from '../../componets/paginationFunc/PaginationFunc';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import CardManga from '../../componets/cardManga/CardManga';
 import Filter from '../../componets/filters/Filter';
 import TwoFilter from '../../componets/filters/TwoFilter';
@@ -52,13 +52,13 @@ function MainPage() {
     dispatch(genresAction())
   }, [dispatch])
 
-  useEffect(() => {
-    dispatch(getMangasByGenresAction({
-      limit: 12,
-      offset: offset,
-      genre_title: selectGenres
-    }))
-  }, [dispatch, offset, selectGenres])
+  // useEffect(() => {
+  //   dispatch(getMangasByGenresAction({
+  //     limit: 12,
+  //     offset: offset,
+  //     genre_title: selectGenres
+  //   }))
+  // }, [dispatch, offset, selectGenres])
 
   useEffect(() => {
     dispatch(getMangasByTypesAction({
